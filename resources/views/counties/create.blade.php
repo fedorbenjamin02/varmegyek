@@ -1,4 +1,5 @@
 <!-- resources/views/counties/create.blade.php -->
+<link rel="stylesheet" href="css/index.css">
 <a href="{{ url('/') }}" title="Kezdőlap"><i class="fa fa-home"></i></a>
 <h1>Vármegye hozzáadás</h1>
 
