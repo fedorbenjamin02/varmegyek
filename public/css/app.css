@@ -1,35 +1,52 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
 #cim{
     text-decoration: none;
-    
-    
     color: black;
     text-align: left;
+    font-family: "Poppins";
+    font-weight: bold;
+}
+.card{
+    box-shadow: 2px 14px 32px rgba(0, 0, 0, 0.4);
 }
 
 h3{
     font-weight: bold;
-    text-decoration: underline;
-    
+    text-decoration: underline
 }
 
-
-
 body{
-    background-color: bisque;
+    background-color: rgb(174, 186, 209);
 }
 
 table{
     
-    margin-left: auto;
-    margin-right: auto;
-    border: 1px solid black;
-    background-color: bisque;
-    border-radius: 5px;
-
+    margin: auto;
+    border: 1px solid rgb(39, 46, 66);
+    background-color: rgb(215, 238, 255);
+    border-radius: 10px;
+    padding-left: 20px;
+    box-shadow: 2px 8px 16px rgba(0, 0, 0, 0.5);
+    margin-bottom: 30px;
 }
 
-td{
-    border: 1px solid black;
+td,tr,th{
+    padding: 10px;
+    font-family: "Poppins";
+}
+td, th{
+    font-size: 1.2rem;
+}
+th{
+    color:rgb(39, 46, 66);
+}
+.kereses{
+    border-color: rgb(35, 38, 89);
+    border-radius: 5px;
+}
+.kereses::placeholder{
+    color: rgb(37, 37, 37);
+    font-family: "Poppins";
 }
 
 

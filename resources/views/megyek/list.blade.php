@@ -15,7 +15,7 @@
                         <div style="display: inline-block; float:right">
                                <form method="post" action="{{route('searchMegyekk')}}" accept-charset="UTF-8">
                                 @csrf
-                                <input type="text" name="needle" placeholder="Keresés"><button class="btn" type="submit"><i class="fa fa-search"></i></button>
+                                <input class="kereses" type="text" name="needle" placeholder="Keresés"><button class="btn" type="submit"><i class="fa fa-search"></i></button>
                             </form>
                         </div>
                     </div>
