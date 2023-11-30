@@ -3,34 +3,54 @@
 namespace App\Console\Commands;
 
 use Illuminate\Console\Command;
-use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Schema;
 
 class ImportCounties extends Command
 {
-    protected $signature = 'app.import-counties {filename} {--database=}';
+    /**
+     * The name and signature of the console command.
+     *
+     * @var string
+     */
+    protected $signature = 'app:import-counties';
 
+    /**
+     * The console command description.
+     *
+     * @var string
+     */
+    protected $description = 'Command description';
 
-    public function handle()
+    /**
+     * Execute the console command.
+
+     */
+
+    public function handle(){
+        $fileName = $this->argument('fileName');
+        $csvData = $this->getCsvData($fileName);
+        var_dump($csvData);
+        return 0;
+    }
+    public function getCsvData($fileName, $withHeader = true) 
     {
-        $filename = $this->argument('filename');
-        $databaseName = $this->option('database') ?? config('database.default');
-
-        if (!Schema::connection($databaseName)->hasTable('counties')) {
-            $this->error("A 'counties' tábla nem létezik az adatbázisodban.");
-            return;
+        if (!file_exists($fileName)) {
+            echo "$fileName nem található";
+            return false;
         }
-
-        $csvData = array_map('str_getcsv', file($filename));
-
-        array_shift($csvData);
-
-        foreach ($csvData as $row) {
-            DB::connection($databaseName)->table('counties')->insert([
-                'name' => $row[0],
-            ]);
+        $csvFile = fopen($fileName, 'r');
+        $header = fgetcsv($csvFile);
+        if ($withHeader) {
+            $lines[] = $header;
         }
+        else {
+            $lines = [];
+        }
+        while (! feof($csvFile)) {
+            $line = fgetcsv($csvFile);
+            $lines[] = $line;
+        }
+        fclose($csvFile);
 
-        $this->info('Vármegyék beimportálva.');
+        return $lines;
     }
 }
