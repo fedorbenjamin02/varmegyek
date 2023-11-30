@@ -53,4 +53,12 @@ class ImportCounties extends Command
 
         return $lines;
     }
+    private function truncate($table){
+        try {
+            DB::statement("TRUNCATE TABLE $table;");
+            $this->info("$table table has been truncated");
+        } catch (Exception $e) {
+            $this->error($e->getMessage());
+        }
+    }
 }
